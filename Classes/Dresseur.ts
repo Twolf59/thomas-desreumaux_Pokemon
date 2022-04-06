@@ -3,8 +3,7 @@ import {Pokemon} from "../Interfaces/Pokemon";
 
 export class Dresseur {
     private _nom: string
-    private _pokeballs!: Pokeball[];
-
+    private _pokeballs: Pokeball[] = [];
 
     constructor(nom: string) {
         this._nom = nom;
@@ -18,19 +17,44 @@ export class Dresseur {
         this._nom = value;
     }
 
-    ajouterPokeballs(nombre: number): void {
+    /**
+     * Ajoute une pokéball das l'inventaire pour un maximum de 6
+     */
+    public ajouterPokeballs(): void {
         if(this._pokeballs.length < 6){
-
+            this._pokeballs.push(new Pokeball(null, this));
+            console.log("Pokéball ajoutée !");
+        }else{
+            console.log("Inventaire plein !");
         }
     }
 
+    /**
+     * Capturer un pokémon
+     * @param cible: Pokemon
+     */
     capturer(cible: Pokemon): void {
-
+        try{
+            this._pokeballs.map(pokeball => {
+                if(!pokeball.contient){
+                    pokeball.affecter(cible);
+                    console.log("Félicitation " + cible.nom + " à été capturé !");
+                }
+            })
+        }catch{
+            console.error("Pas de pokéballs");
+        }
     }
 
-    getPokemon(){
-        this._pokeballs.filter(index => {
-            console.log("Liste des pokémons : " + index.getContenu() + "\r\n");
+    /**
+     * Récupère la liste des pokémons capturés
+     */
+    public getPokemons(): void{
+        console.log("Liste des pokémons : ");
+        let cpt = 1;
+        this._pokeballs.map(pokeball => {
+            console.log("Pokeball n" + cpt + " " + pokeball.contient.nom + "\r\n");
+            cpt++;
         })
     }
 }

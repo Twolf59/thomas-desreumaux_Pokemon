@@ -6,7 +6,8 @@ export interface Pokemon {
     type: string;
     captif: boolean;
     horsJeu: boolean;
-    attaquer(cible: Pokemon): void;
+
+    attaquer(cible: Pokemon): number;
     subirAttaque(degats: number): void;
     soigner(): void;
     renommer(nom: string): void;
