@@ -53,7 +53,7 @@ export class Dresseur {
         console.log("Liste des pokémons : ");
         let cpt = 1;
         this._pokeballs.map(pokeball => {
-            console.log("Pokeball n" + cpt + " " + pokeball.contient.nom + "\r\n");
+            console.log("Pokeball " + cpt + " " + pokeball.contient.nom + "\r\n");
             cpt++;
         })
     }
