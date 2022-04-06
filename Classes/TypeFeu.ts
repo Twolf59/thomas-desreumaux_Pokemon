@@ -7,16 +7,28 @@ export abstract class TypeFeu implements Type{
         this.degats = degats;
     }
 
+    /**
+     * Calculer degats attaque Feu contre Eau
+     * @Return number
+     */
     calculerDegatsContreEau(): number {
-        return this.degats = 30/2;
+        return this.degats/2;
     }
 
+    /**
+     * Calculer degats attaque Feu contre Feu
+     * @Return number
+     */
     calculerDegatsContreFeu(): number {
-        return this.degats = 30;
+        return this.degats;
     }
 
+    /**
+     * Calculer degats attaque Feu contre Plante
+     * @Return number
+     */
     calculerDegatsContrePlante(): number {
-        return this.degats = 30*2;
+        return this.degats*2;
     }
 
 
